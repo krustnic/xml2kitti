@@ -20,7 +20,7 @@ class TestXmlReader(unittest.TestCase):
 
 
     def test_get_filename(self):
-        self.assertEqual(self.xml_reader.get_filename(), "IMAG0113")
+        self.assertEqual("IMAG0113", self.xml_reader.get_filename())
 
     def test_get_dir(self):
         dir = self.xml_reader.get_dir()

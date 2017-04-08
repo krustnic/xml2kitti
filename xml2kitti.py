@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 import sys
 from os import listdir
-from os.path import isfile, isdir, join, dirname, splitext
+from os.path import isfile, isdir, join, dirname, splitext, basename
 import xml.etree.ElementTree as ET
 
 
@@ -15,8 +15,7 @@ class XMLReader:
         self.template = "{name} 0.00 0 0.0 {xmin}.00 {ymin}.00 {xmax}.00 {ymax}.00 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0"
 
     def get_filename(self):
-        return self.root.find("filename").text
-
+        return splitext(basename(self.path))[0]
 
     def get_dir(self):
         return dirname(self.path)
@@ -72,7 +71,7 @@ def check_argv(argv):
 
 def main():
     if not check_argv(sys.argv):
-        print "Wrong arguments. You should specify xml files or directory with xml files"
+        print("Wrong arguments. You should specify xml files or directory with xml files")
 
     # remove script name
     args = sys.argv[1:]
@@ -89,7 +88,7 @@ def main():
         for file in files:
             if process_file(file): processed_file_count += 1
 
-    print "Finished. {0} Files are processed".format(processed_file_count)
+    print("Finished. {0} Files are processed".format(processed_file_count))
 
 if __name__ == "__main__":
     main()
