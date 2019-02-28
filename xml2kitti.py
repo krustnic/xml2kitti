@@ -48,7 +48,7 @@ class XMLReader:
         for object in objects[:-1]:
             file.write(self.fill_template(object) + "\n")
         # Write last without '\n'
-        file.write(self.fill_template(object))
+        file.write(self.fill_template(objects[-1]))
 
         file.close()
 
